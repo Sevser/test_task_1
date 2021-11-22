@@ -3,23 +3,18 @@
 ## Задание
 ​
 
-Необходимо сверстать адаптивную страницу со списком фотографий.
+It is necessary to make a responsive page with a list of photos.
 ​
 
-При клике на фотографии открывается модальное окно с фотографией, списком комментариев и формой добавления комментариев.
+When you click on a photo, a modal window opens with a photo, a list of comments and a form for adding comments.
 ​
 
 Список ручек:
-* GET `https://boiling-refuge-66454.herokuapp.com/images` - получение списка фотографий.
-* GET `https://boiling-refuge-66454.herokuapp.com/images/:imageId` - получения большого изображения и списка комментариев.
-* POST `https://boiling-refuge-66454.herokuapp.com/images/:imageId/comments` - добавление комментария (204 – OK, комментарий не сохраняется).
+* GET `https://boiling-refuge-66454.herokuapp.com/images` - get a list of photos.
+* GET `https://boiling-refuge-66454.herokuapp.com/images/:imageId` - getting a large image and a list of comments.
+* POST `https://boiling-refuge-66454.herokuapp.com/images/:imageId/comments` - adding a comment (204 - OK, the comment is not saved).
 
 ​
-Дизайн можно найти [тут](https://www.figma.com/file/W4FTrwVl8bswZGusaKYHFB/Test-task-(Copy)?node-id=0%3A2).
+Design can be found [here](https://www.figma.com/file/W4FTrwVl8bswZGusaKYHFB/Test-task-(Copy)?node-id=0%3A2).
 ​
 
-Мы оценим если:
-- приложение будет работать локально после `npm i && npm run start`;
-- приложение написано на React;
-- не используются внешние компоненты, например, модальное окно;
-- учтен UX.

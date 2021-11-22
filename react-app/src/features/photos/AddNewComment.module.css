@@ -1,0 +1,16 @@
+.add-new-comment-container {
+    padding: 0 22px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-new-comment-container > input {
+    margin-bottom: 20px;
+}
+
+@media (min-width: 900px) {
+    .add-new-comment-container {
+        width: 55%;
+        padding: 0;
+    }
+}

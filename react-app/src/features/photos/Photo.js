@@ -4,20 +4,39 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   clearRequestedPhoto,
 } from './photoSlice';
-import styles from './Photos.module.css';
+import styles from './Photo.module.css';
+import { formatDate } from '../../utills/formatters';
+import {AddNewComment} from './AddNewComment';
 
 export function Photo(props) {
   const dispatch = useDispatch();
+  const hasComments = props.photo && props.photo.comments && props.photo.comments.length;
 
   return (
     <BaseModal  hideModal={() => dispatch(clearRequestedPhoto())}>
       <BaseModal.Header>
-        <h1>Photo id = {props.photo.id}</h1>
       </BaseModal.Header>
       <BaseModal.Body>
-        <p>A paragraph for the main content.</p>
-        <p>And another one.</p>
+        <div className={styles['photo-modal-body']}>
+          <div className={styles['image-comments-container']}>
+            <img
+              alt={`image ${props.photo.id}`}
+              src={props.photo.url}/>
+            <div className={styles['comments-container']}>
+              {hasComments ? props.photo.comments.map((comment) =>
+                <div
+                  key={comment.id}
+                  className={styles['comment-container']}>
+                  <div className={styles['comment-date']}>{formatDate(comment.date)}</div>
+                  <div className={styles['comment-text']}>{comment.text}</div>
+                </div>) : ''}
+            </div>
+          </div>
+          <AddNewComment />
+        </div>
       </BaseModal.Body>
+      <BaseModal.Footer>
+      </BaseModal.Footer>
     </BaseModal>
   );
 }

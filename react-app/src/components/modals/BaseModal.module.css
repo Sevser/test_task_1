@@ -16,6 +16,13 @@
     bottom: 0;
     background: rgba(0,0,0,0.3);
 }
+.close-button {
+    position: absolute;
+    top: 21px;
+    right: 21px;
+    z-index: 1;
+    cursor: pointer;
+}
 
 .container {
     display: flex;
@@ -24,14 +31,23 @@
     align-items: center;
     background: white;
     z-index: 1;
+    position: relative;
 }
+
+@media (max-width: 900px) {
+    .container {
+        height: 100vh;
+        width: 100vw;
+    }
+}
+
 
 .header {
 
 }
 
 .body {
-
+    padding: 30px;
 }
 
 .footer {
