@@ -1,5 +1,10 @@
 import styles from './UiButton.module.css';
 
 export function UiButton(props) {
-  return <button className={styles.button}>{props.children}</button>
+  return <button
+    onClick={props.onClick}
+    disabled={props.disabled}
+    className={styles.button}>
+    {props.children}
+  </button>
 }

@@ -5,5 +5,5 @@ export function UiInput(props) {
     value={props.value}
     className={styles.input}
     placeholder={props.placeholder}
-    onInput={props.onInput} />
+    onInput={(e) => props.onInput(e.target.value)} />
 }

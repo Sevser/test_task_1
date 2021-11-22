@@ -29,12 +29,11 @@ export async function fetchPhotoById(imageId = null) {
 
 export async function addCommentToPhoto(imageId, comment) {
   try {
-    const res = await axios.post(`https://boiling-refuge-66454.herokuapp.com/images/${imageId}/comments`, {
-      params: {
-        comment,
-      },
-    });
-    return res && res.data;
+    const res = await axios.post(`https://boiling-refuge-66454.herokuapp.com/images/${imageId}/comments`, comment);
+    if (res.status === 204) {
+      return res && res.data;
+    }
+    throw Error(res.data);
   } catch (e) {
     throw Error(e.message || 'add comment to photo error');
   }

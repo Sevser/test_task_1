@@ -6,6 +6,9 @@ const initialState = {
   photoListStatus: 'idle',
   currentPhoto: null,
   currentPhotoStatus: 'idle',
+  newCommentText: '',
+  newCommentName: '',
+  createNewCommentStatus: 'idle',
 };
 
 export const fetchListPhotos = createAsyncThunk(
@@ -24,6 +27,14 @@ export const fetchPhotoById = createAsyncThunk(
   }
 );
 
+export const addCommentToPhoto = createAsyncThunk(
+  'photo/addCommentToPhoto',
+  async ({ imageId, comment }) => {
+    const response = await API.addCommentToPhoto(imageId, comment);
+    return response;
+  }
+);
+
 export const photoSlice = createSlice({
   name: 'photo',
   initialState,
@@ -31,6 +42,12 @@ export const photoSlice = createSlice({
     clearRequestedPhoto(state) {
       state.currentPhotoStatus = 'idle';
       state.currentPhoto = null;
+    },
+    updateCommentText(state, action) {
+      state.newCommentText = action.payload;
+    },
+    updateCommentName(state, action) {
+      state.newCommentName = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -48,15 +65,27 @@ export const photoSlice = createSlice({
       .addCase(fetchPhotoById.fulfilled, (state, action) => {
         state.currentPhotoStatus = 'success';
         state.currentPhoto = action.payload;
+      })
+      .addCase(addCommentToPhoto.pending, (state) => {
+        state.createNewCommentStatus = 'pending';
+      })
+      .addCase(addCommentToPhoto.fulfilled, (state, action) => {
+        state.createNewCommentStatus = 'idle';
       });
   },
 });
 
 export const {
   clearRequestedPhoto,
+  updateCommentText,
+  updateCommentName,
 } = photoSlice.actions;
 
 export const selectPhotoList = (state) => state.photo.photoList;
 export const selectPhoto = (state) => state.photo.currentPhoto;
+export const newComment = (state) => ({
+  comment: state.photo.newCommentText,
+  name: state.photo.newCommentName,
+});
 
 export default photoSlice.reducer;

@@ -32,7 +32,7 @@ export function Photo(props) {
                 </div>) : ''}
             </div>
           </div>
-          <AddNewComment />
+          <AddNewComment imageId={props.photo.id} />
         </div>
       </BaseModal.Body>
       <BaseModal.Footer>
