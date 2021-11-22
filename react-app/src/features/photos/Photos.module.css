@@ -1,0 +1,48 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.container {
+    position: relative;
+}
+
+.image {
+    margin-bottom: 30px;
+    width: 25%;
+    cursor: pointer;
+}
+.image:hover {
+    -webkit-box-shadow: 4px 4px 18px 10px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 18px 10px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 18px 10px rgba(34, 60, 80, 0.2);
+}
+
+@media (orientation: portrait) {
+    .row {
+        flex-direction: column;
+    }
+    .image {
+        width: 100%
+    }
+}
+
+@media (min-width: 900px) and (orientation: landscape){
+    .image {
+        width: 50%;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+    .image {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1440px) and (orientation: landscape) {
+    .image {
+        width: 25%;
+    }
+}
+
